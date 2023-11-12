@@ -10,6 +10,12 @@ tasks:
   - name: Script Task
     # init: echo 'init script' # runs during prebuild => https://www.gitpod.io/docs/configure/projects/prebuilds
     command: echo 'start script'
+  - name: Install Py 3.11 (pre-req for gcloud install)
+    init: pyenv install 3.11
+    command: pyenv global 3.11
+  - name: Install gcloud
+    init: curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-394.0.0-linux-x86_64.tar.gz
+    command: tar -xf google-cloud-cli-394.0.0-linux-x86_64.tar.gz && CLOUDSDK_CORE_DISABLE_PROMPTS=1 ./google-cloud-sdk/install.sh
 
 
 
