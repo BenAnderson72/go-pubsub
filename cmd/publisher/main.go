@@ -16,9 +16,9 @@ import (
 
 var (
 	//projectID of GCP project.
-	projectID = "go-app-275713"
+	projectID = "my-pubsub-404318" // TODO: get from .json
 	// topicID of PubSub topic.
-	topicID = "medium"
+	topicID = "MyTopic"
 )
 
 // publishHandler handler for publish message.

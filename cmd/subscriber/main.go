@@ -13,9 +13,9 @@ import (
 
 var (
 	//projectID of GCP project.
-	projectID = "go-app-275713"
+	projectID = "my-pubsub-404318" // TODO: get from .json
 	// subID of PubSub subscription.
-	subID = "medium-sub"
+	subID = "MyTopic-sub"
 )
 
 // publishHandler handler for subscribe message.
