@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"os/signal"
@@ -24,7 +25,10 @@ var (
 // publishHandler handler for publish message.
 func publishHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	ctx := req.Context()
+
+	// ctx := req.Context() TODO: review this as it needs ctx := context.Background()
+
+	ctx := context.Background()
 
 	// Init PubSub Client.
 	client, err := pubsub.NewClient(ctx, projectID)
@@ -44,8 +48,9 @@ func publishHandler(w http.ResponseWriter, req *http.Request) {
 	// Create a references to a topic.
 	t := client.Topic(topicID)
 	// Publish the message to the topic.
+	msgx := fmt.Sprintf("Hello World %d", rand.Intn(100))
 	result := t.Publish(ctx, &pubsub.Message{
-		Data: []byte("Hello world!"),
+		Data: []byte(msgx),
 		Attributes: map[string]string{
 			"origin":   "golang",
 			"username": "gcp",

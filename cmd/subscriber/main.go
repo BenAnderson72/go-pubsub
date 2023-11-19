@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"errors"
 	"log"
 	"os"
 	"os/signal"
@@ -23,6 +22,7 @@ func handler(ctx context.Context) error {
 	// Init PubSub Client.
 	client, err := pubsub.NewClient(ctx, projectID)
 	if err != nil {
+		log.Print("GOOGLE_APPLICATION_CREDENTIALS:", os.Getenv("GOOGLE_APPLICATION_CREDENTIALS"))
 		return err
 	}
 	defer client.Close()
@@ -43,13 +43,16 @@ func handler(ctx context.Context) error {
 }
 
 func main() {
+	os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "/workspace/go-pubsub-ws/.service_account.json") // TODO: Why did I need to do this?
+
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
 	// Start running the server.
 	go func() {
 		err := handler(ctx)
-		if err != nil && errors.Is(err, context.Canceled) {
+		// if err != nil && errors.Is(err, context.Canceled) {
+		if err != nil {
 			log.Fatalf("failed to pull messages: %v\n", err)
 		}
 	}()

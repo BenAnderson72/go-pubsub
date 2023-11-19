@@ -6,6 +6,8 @@ This repository is for my article on Medium about Messaging with PubSub and Gola
 
 Replace the [service_account.json](https://github.com/moemoe89/go-pubsub/blob/main/service_account.json) with your key.
 
+https://medium.easyread.co/event-driven-with-pubsub-and-golang-3924a4bba8a9
+
 ```json
 {
   "type": "service_account",
@@ -24,7 +26,8 @@ Replace the [service_account.json](https://github.com/moemoe89/go-pubsub/blob/ma
 
 Set environment variable for the `service_account.json` path.
 ```shell
-export GOOGLE_APPLICATION_CREDENTIALS="/.service_account.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/workspace/go-pubsub-ws/.service_account.json"
+printenv | grep GOO
 ```
 
 Run the publisher server
