@@ -24,7 +24,7 @@ Replace the [service_account.json](https://github.com/moemoe89/go-pubsub/blob/ma
 
 Set environment variable for the `service_account.json` path.
 ```shell
-export GOOGLE_APPLICATION_CREDENTIALS="path/service_account.json"
+export GOOGLE_APPLICATION_CREDENTIALS="/.service_account.json"
 ```
 
 Run the publisher server
