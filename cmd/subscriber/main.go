@@ -43,7 +43,7 @@ func handler(ctx context.Context) error {
 }
 
 func main() {
-	os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "/workspace/go-pubsub-ws/.service_account.json") // TODO: Why did I need to do this?
+	// os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "/workspace/go-pubsub-ws/.service_account.json") // TODO: Why did I need to do this?
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()

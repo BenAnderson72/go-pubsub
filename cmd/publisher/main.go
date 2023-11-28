@@ -22,6 +22,10 @@ var (
 	topicID = "MyTopic"
 )
 
+// func init() {
+// 	os.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "/workspace/go-pubsub-ws/.service_account.json")
+// }
+
 // publishHandler handler for publish message.
 func publishHandler(w http.ResponseWriter, req *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -48,7 +52,7 @@ func publishHandler(w http.ResponseWriter, req *http.Request) {
 	// Create a references to a topic.
 	t := client.Topic(topicID)
 	// Publish the message to the topic.
-	msgx := fmt.Sprintf("Hello World %d", rand.Intn(100))
+	msgx := fmt.Sprintf("Hello World %d", rand.Intn(100)+1000)
 	result := t.Publish(ctx, &pubsub.Message{
 		Data: []byte(msgx),
 		Attributes: map[string]string{
